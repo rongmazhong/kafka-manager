@@ -4,7 +4,7 @@ MAINTAINER rong <rongmazhong@gmail.com>
 
 ENV JAVA_HOME=/usr/java/default/ \
     ZK_HOSTS=localhost:2181 \
-    KM_CONFIGFILE="conf/application.conf"
+    KM_CONFIGFILE="application.conf"
 RUN apt-get update
 RUN apt-get install -y wget unzip && \
     mkdir -p /tmp && \
@@ -16,6 +16,7 @@ RUN apt-get install -y wget unzip && \
     apt-get autoremove -y wget unzip && \
     apt-get clean all
 
+ADD application.conf /kafka-manager/application.conf
 ADD start-kafka-manager.sh /kafka-manager/start-kafka-manager.sh
 
 RUN chmod +x /kafka-manager/start-kafka-manager.sh 
